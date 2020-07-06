@@ -12,4 +12,6 @@ pipenv install flask	// install pipenv in the virtual environment
 export FLASK_APP=hello	// name of the flask app in the virtual environment
 flask run	// start the flask app
 
+export FLASK_ENV = development	// change default environment from production to development
 
+default app name is app.py but we have to specify the environment everytime we launch a virtual environment
