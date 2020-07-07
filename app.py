@@ -1,5 +1,5 @@
 from json import load
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 import json
 import os.path
 from werkzeug.utils import secure_filename
@@ -53,3 +53,9 @@ def redirect_to_url(code):
                     return redirect(urls[code]['url'])
                 else:
                     return redirect(url_for('static', filename='user_files/' + urls[code]['file']))
+    return abort(404)
+
+
+@app.errorhandler(404)
+def page_not_found(err):
+    return render_template('page_not_found.html'), 404
